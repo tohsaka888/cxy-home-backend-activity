@@ -2,7 +2,7 @@
  * @Author: tohsaka888
  * @Date: 2022-09-05 13:38:42
  * @LastEditors: tohsaka888
- * @LastEditTime: 2022-09-15 09:16:03
+ * @LastEditTime: 2022-09-15 10:01:00
  * @Description: 请填写简介
  */
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
@@ -51,10 +51,9 @@ const cors = Cors({
 type Query = {
   id?: string;
   name?: string;
-  username?: string;
+  author?: string;
   createdStartTime?: string;
   createdEndTime?: string;
-  place?: number;
 }
 
 
@@ -73,8 +72,7 @@ export default async function handler(
         {
           name: body.name ? eval('/' + body.name + '/i') : /^/,
           // _id: body.id ? '/' + body.id + '/i' : '/^/',
-          'creator.username': body.username ? eval('/' + body.username + '/i') : /^/,
-          'info.place': body.place ? eval('/' + body.place + '/i') : /^/
+          'author': body.author ? eval('/' + body.author + '/i') : /^/,
         }
       ).toArray()
 
