@@ -84,7 +84,10 @@ export default async function handler(
           return filter1 && filter2
         }
       )
-      res.status(200).json({ success: true, list: filteredactivitys })
+      res.status(200).json({ success: true, list: filteredactivitys.map((item => {
+        delete item.images
+        return item
+      })) })
     } else {
       new Error('连接数据库失败')
     }
